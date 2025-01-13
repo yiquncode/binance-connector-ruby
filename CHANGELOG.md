@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.1 - 2025-01-13
+### Changed
+- Updated documentation links.
+
 ## 1.7.0 -2024-12-05
 ### Added
 - Convert endpoints:
