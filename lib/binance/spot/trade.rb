@@ -8,7 +8,7 @@ module Binance
     # - cancel orders (spot and oco)
     # - account information
     # - my trades
-    # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api
+    # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints
     module Trade
       # TestNew Order
       #
@@ -29,7 +29,7 @@ module Binance
       # @option kwargs [Float] :icebergeQty
       # @option kwargs [String] :newOrderRespType Set the response JSON. ACK, RESULT, or FULL.
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#test-new-order-trade
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#test-new-order-trade
       def new_order_test(symbol:, side:, type:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
         Binance::Utils::Validation.require_param('side', side)
@@ -61,7 +61,7 @@ module Binance
       # @option kwargs [Float] :icebergeQty
       # @option kwargs [String] :newOrderRespType Set the response JSON. ACK, RESULT, or FULL.
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#new-order-trade
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-trade
       def new_order(symbol:, side:, type:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
         Binance::Utils::Validation.require_param('side', side)
@@ -84,7 +84,7 @@ module Binance
       # @option kwargs [String] :origClientOrderId
       # @option kwargs [String] :newClientOrderId
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-order-trade
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-order-trade
       def cancel_order(symbol:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -98,7 +98,7 @@ module Binance
       # @param symbol [String] the symbol
       # @param kwargs [Hash]
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-all-open-orders-on-a-symbol-trade
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-all-open-orders-on-a-symbol-trade
       def cancel_open_orders(symbol:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -114,7 +114,7 @@ module Binance
       # @option kwargs [Integer] :orderId
       # @option kwargs [String] :origClientOrderId
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-order-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-order-user_data
       def get_order(symbol:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -128,7 +128,7 @@ module Binance
       # @param kwargs [Hash]
       # @option kwargs [String] :symbol the symbol
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#current-open-orders-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#current-open-orders-user_data
       def open_orders(**kwargs)
         @session.sign_request(:get, '/api/v3/openOrders', params: kwargs)
       end
@@ -146,7 +146,7 @@ module Binance
       # @option kwargs [String] :endTime
       # @option kwargs [String] :limit Default 500; max 1000.
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#all-orders-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#all-orders-user_data
       def all_orders(symbol:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -184,7 +184,7 @@ module Binance
       # @option kwargs [String] :belowStrategyType Arbitrary numeric value identifying the below order strategy. Values smaller than 1000000 are reserved and cannot be used.
       # @option kwargs [String] :newOrderRespType
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#new-order-list---oco-trade
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#new-order-list---oco-trade
       def new_oco_order(symbol:, side:, quantity:, aboveType:, belowType:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
         Binance::Utils::Validation.require_param('side', side)
@@ -211,7 +211,7 @@ module Binance
       # @option kwargs [String] :listClientOrderId
       # @option kwargs [String] :newClientOrderId
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-order-list-trade
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-order-list-trade
       def cancel_order_list(symbol:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -228,7 +228,7 @@ module Binance
       # @option kwargs [Integer] :orderListId
       # @option kwargs [String] :orgClientOrderId
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-order-list-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-order-list-user_data
       def order_list(**kwargs)
         @session.sign_request(:get, '/api/v3/orderList', params: kwargs)
       end
@@ -245,7 +245,7 @@ module Binance
       # @option kwargs [String] :endTime
       # @option kwargs [String] :limit Default 500; max 1000.
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-all-order-lists-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-all-order-lists-user_data
       def all_order_list(**kwargs)
         @session.sign_request(:get, '/api/v3/allOrderList', params: kwargs)
       end
@@ -256,7 +256,7 @@ module Binance
       #
       # @param kwargs [Hash]
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-open-order-lists-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#query-open-order-lists-user_data
       def open_order_list(**kwargs)
         @session.sign_request(:get, '/api/v3/openOrderList', params: kwargs)
       end
@@ -267,7 +267,7 @@ module Binance
       #
       # @param kwargs [Hash]
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#account-information-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#account-information-user_data
       def account(**kwargs)
         @session.sign_request(:get, '/api/v3/account', params: kwargs)
       end
@@ -284,7 +284,7 @@ module Binance
       # @option kwargs [Integer] :fromId TradeId to fetch from. Default gets most recent trades.
       # @option kwargs [Integer] :limit Default 500; max 1000.
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#account-trade-list-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#account-trade-list-user_data
       def my_trades(symbol:, **kwargs)
         @session.sign_request(:get, '/api/v3/myTrades', params: kwargs.merge(symbol: symbol))
       end
@@ -295,7 +295,7 @@ module Binance
       #
       # @param kwargs [Hash]
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-unfilled-order-count-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-unfilled-order-count-user_data
       def get_order_rate_limit(**kwargs)
         @session.sign_request(:get, '/api/v3/rateLimit/order', params: kwargs)
       end
@@ -311,7 +311,7 @@ module Binance
       # @param kwargs [Integer] :fromPreventedMatchId
       # @param kwargs [Integer] :limit Default: 500; Max: 1000
       # @param kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-prevented-matches-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-prevented-matches-user_data
       def my_prevented_matches(symbol:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -329,7 +329,7 @@ module Binance
       # @param kwargs [Integer] :fromAllocationId
       # @param kwargs [Integer] :limit Default 500;Max 1000
       # @param kwargs [Integer] :orderId
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-allocations-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-allocations-user_data
       def my_allocations(symbol:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -341,7 +341,7 @@ module Binance
       # GET /api/v3/account/commission
       #
       # @param symbol [String]
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#query-commission-rates-user_data
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/account-endpoints#query-commission-rates-user_data
       def commission_rate(symbol:)
         Binance::Utils::Validation.require_param('symbol', symbol)
 
@@ -376,7 +376,7 @@ module Binance
       # @option kwargs [String] :orderRateLimitExceededMode DO_NOTHING (default)- will only attempt to cancel the order if account has not exceeded the unfilled order rate limit
       #                          CANCEL_ONLY - will always cancel the order
       # @option kwargs [Integer] :recvWindow The value cannot be greater than 60000
-      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/public-api-endpoints#cancel-an-existing-order-and-send-a-new-order-trade
+      # @see https://developers.binance.com/docs/binance-spot-api-docs/rest-api/trading-endpoints#cancel-an-existing-order-and-send-a-new-order-trade
       def cancel_replace(symbol:, side:, type:, cancelReplaceMode:, **kwargs)
         Binance::Utils::Validation.require_param('symbol', symbol)
         Binance::Utils::Validation.require_param('side', side)
