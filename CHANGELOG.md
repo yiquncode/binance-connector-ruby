@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.7.1 - 2025-01-03
+## 1.7.1 - 2025-01-13
 ### Changed
 - Updated documentation links.
 
